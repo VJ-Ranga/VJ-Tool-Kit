@@ -1,6 +1,6 @@
 # VJ-Tool-Kit
 
-=== WP Refresh ===
+=== VJ-Tool-Kit ===
 
 Contributors: VJRanga
 Tags: cleanup, optimization, delete, posts, pages, comments, media, themes, permalink, plugins, create pages
