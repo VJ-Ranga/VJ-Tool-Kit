@@ -1,0 +1,72 @@
+<div class="wrap">
+    <h1>VJ Tool Kit Settings</h1>
+    <form method="post">
+        <h2>Select Tasks:</h2>
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_posts">
+                    Delete all posts
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_pages">
+                    Delete all pages
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_comments">
+                    Delete all comments
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_media">
+                    Delete all media
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="remove_inactive_themes">
+                    Remove all inactive themes
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="change_permalink_structure">
+                    Change Permalink structure to Post name
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_plugins">
+                    Disable and Delete all plugins (except this plugin)
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="create_pages">
+                    Create new pages
+                </label>
+            </li>
+        </ul>
+
+        <h2>Create Pages:</h2>
+        <p>
+            <label for="vj_toolkit_page_list">Page List (one page per line):</label><br>
+            <textarea name="vj_toolkit_page_list" id="vj_toolkit_page_list" rows="5" cols="50"></textarea>
+        </p>
+        <p>
+            <em>Example list:</em><br>
+            Home<br>
+            About Us<br>
+            Contact Us
+        </p>
+
+        <p>
+            <input type="submit" name="vj_toolkit_submit" class="button button-primary" value="Execute Tasks">
+        </p>
+    </form>
+</div>
