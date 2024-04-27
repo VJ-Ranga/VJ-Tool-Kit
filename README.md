@@ -41,13 +41,3 @@ Renamed plugin to 'VJ Tool Kit' and updated related files
 
 = 1.0.0 =
 - Initial release.
-
-== Upgrade Notice ==
-= 2.0.2 =
-Renamed plugin to 'VJ Tool Kit' and updated related files
-
-= 2.0.1 =
-Bug fixes and improvements.
-
-= 2.0.0 =
-Added support for creating new pages and improved UI.
