@@ -29,6 +29,7 @@ A versatile plugin for WordPress, simplifying website cleaning and optimization.
    - Enter the page titles in the 'Page List' textarea on the 'WP Refresh Settings' page and click 'Execute Tasks.'
 
 == Changelog ==
+
 = 2.0.2 =
 Renamed plugin to 'VJ Tool Kit' and updated related files
 
