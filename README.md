@@ -14,7 +14,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 A versatile plugin for WordPress, simplifying website cleaning and optimization. Easily delete posts, pages, comments, media, and inactive themes. Manage permalink structure, plugins, and create new pages effortlessly.
 
 == Installation ==
-1. Upload the `wp-refresh` folder to the `/wp-content/plugins/` directory.
+1. Upload the `VJ-Tool-Kit` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to the 'WP Refresh Settings' page under the 'Settings' menu to configure the plugin.
 
