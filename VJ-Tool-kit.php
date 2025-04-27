@@ -153,8 +153,8 @@ function vj_toolkit_settings_page() {
         }
     }
 
-    // Include the HTML template
-    include_once plugin_dir_path(__FILE__) . 'settings-page.html';
+    // Include the PHP template instead of HTML
+    require_once plugin_dir_path(__FILE__) . 'settings-page.php';
 }
 
 // Task: Delete all posts
