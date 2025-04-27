@@ -1,35 +1,41 @@
 <div class="wrap">
     <h1>VJ Tool Kit Settings</h1>
     <form method="post">
+        <?php wp_nonce_field('vj_toolkit_actions', 'vj_toolkit_nonce'); ?>
+        
+        <div class="notice notice-warning">
+            <p><strong>Warning:</strong> The actions below are destructive and cannot be undone. Please use with caution.</p>
+        </div>
+        
         <h2>Select Tasks:</h2>
         <ul>
             <li>
                 <label>
-                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_posts">
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_posts" class="destructive-action">
                     Delete all posts
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_pages">
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_pages" class="destructive-action">
                     Delete all pages
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_comments">
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_comments" class="destructive-action">
                     Delete all comments
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_media">
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_media" class="destructive-action">
                     Delete all media
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="vj_toolkit_tasks[]" value="remove_inactive_themes">
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="remove_inactive_themes" class="destructive-action">
                     Remove all inactive themes
                 </label>
             </li>
@@ -41,7 +47,7 @@
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_plugins">
+                    <input type="checkbox" name="vj_toolkit_tasks[]" value="delete_plugins" class="destructive-action">
                     Disable and Delete all plugins (except this plugin)
                 </label>
             </li>
@@ -66,7 +72,23 @@
         </p>
 
         <p>
-            <input type="submit" name="vj_toolkit_submit" class="button button-primary" value="Execute Tasks">
+            <input type="submit" name="vj_toolkit_submit" id="vj_toolkit_submit" class="button button-primary" value="Execute Tasks" data-confirm="Are you sure you want to execute these tasks? This cannot be undone.">
         </p>
     </form>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#vj_toolkit_submit').on('click', function(e) {
+                // Check if destructive actions are selected
+                var hasDestructiveAction = $('.destructive-action:checked').length > 0;
+                
+                if (hasDestructiveAction) {
+                    if (!confirm($(this).data('confirm'))) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
 </div>
