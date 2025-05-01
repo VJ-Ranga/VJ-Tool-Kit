@@ -276,9 +276,17 @@ function vj_toolkit_remove_inactive_themes() {
     $count = 0;
     $themes = wp_get_themes(array('errors' => null, 'allowed' => null, 'blog_id' => 0));
     $active_theme = get_stylesheet();
-
+    
+    // Get the parent theme if the current theme is a child theme
+    $parent_theme = '';
+    $current_theme = wp_get_theme();
+    if ($current_theme->parent()) {
+        $parent_theme = $current_theme->parent()->get_stylesheet();
+    }
+    
     foreach ($themes as $theme_slug => $theme) {
-        if ($theme_slug !== $active_theme && !is_child_theme($theme_slug)) {
+        // Skip the active theme and its parent theme
+        if ($theme_slug !== $active_theme && $theme_slug !== $parent_theme) {
             $result = delete_theme($theme_slug);
             if (!is_wp_error($result)) {
                 $count++;
