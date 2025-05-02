@@ -11,12 +11,20 @@
  * Donate link: https://www.buymeacoffee.com/vjranga
  * Tested up to: 6.2.2
  * Requires PHP: 7.4
+ * Text Domain: vj-toolkit
+ * Domain Path: /languages
  */
 
 // Prevent direct file access
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Load plugin textdomain for translations
+function vj_toolkit_load_textdomain() {
+    load_plugin_textdomain('vj-toolkit', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+}
+add_action('plugins_loaded', 'vj_toolkit_load_textdomain');
 
 // Enqueue admin styles
 function vj_toolkit_admin_styles($hook) {
@@ -31,131 +39,18 @@ add_action('admin_enqueue_scripts', 'vj_toolkit_admin_styles');
 
 // Add plugin name under the Settings menu
 function vj_toolkit_add_settings_menu() {
-    add_options_page('VJ Tool Kit Settings', 'VJ Tool Kit', 'manage_options', 'vj-toolkit-settings', 'vj_toolkit_settings_page');
+    add_options_page(
+        esc_html__('VJ Tool Kit Settings', 'vj-toolkit'),
+        esc_html__('VJ Tool Kit', 'vj-toolkit'),
+        'manage_options',
+        'vj-toolkit-settings',
+        'vj_toolkit_settings_page'
+    );
 }
 add_action('admin_menu', 'vj_toolkit_add_settings_menu');
 
-// Plugin settings page
-function vj_toolkit_settings_page() {
-    // Check user capabilities
-    if (!current_user_can('manage_options')) {
-        wp_die(__('You do not have sufficient permissions to access this page.'));
-    }
-    
-    $task_results = array();
-    $has_errors = false;
-    
-    // Process form submission
-    if (isset($_POST['vj_toolkit_submit'])) {
-        // Verify nonce
-        if (!isset($_POST['vj_toolkit_nonce']) || !wp_verify_nonce($_POST['vj_toolkit_nonce'], 'vj_toolkit_actions')) {
-            wp_die('Security check failed. Please try again.');
-        }
-        
-        if (isset($_POST['vj_toolkit_tasks']) && is_array($_POST['vj_toolkit_tasks'])) {
-            $tasks = $_POST['vj_toolkit_tasks'];
-            
-            foreach ($tasks as $task) {
-                try {
-                    switch ($task) {
-                        case 'delete_posts':
-                            $count = vj_toolkit_delete_posts();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d posts deleted successfully.', $count)
-                            );
-                            break;
-                            
-                        case 'delete_pages':
-                            $count = vj_toolkit_delete_pages();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d pages deleted successfully.', $count)
-                            );
-                            break;
-                            
-                        case 'delete_comments':
-                            $count = vj_toolkit_delete_comments();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d comments deleted successfully.', $count)
-                            );
-                            break;
-                            
-                        case 'delete_media':
-                            $count = vj_toolkit_delete_media();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d media items deleted successfully.', $count)
-                            );
-                            break;
-                            
-                        case 'remove_inactive_themes':
-                            $count = vj_toolkit_remove_inactive_themes();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d inactive themes removed successfully.', $count)
-                            );
-                            break;
-                            
-                        case 'change_permalink_structure':
-                            vj_toolkit_change_permalink_structure();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => 'Permalink structure changed to Post name.'
-                            );
-                            break;
-                            
-                        case 'delete_plugins':
-                            $count = vj_toolkit_disable_and_delete_plugins();
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d plugins disabled and deleted successfully.', $count)
-                            );
-                            break;
-                            
-                        case 'create_pages':
-                            $page_list = isset($_POST['vj_toolkit_page_list']) ? sanitize_textarea_field($_POST['vj_toolkit_page_list']) : '';
-                            $count = vj_toolkit_create_pages($page_list);
-                            $task_results[$task] = array(
-                                'success' => true,
-                                'message' => sprintf('%d new pages created successfully.', $count)
-                            );
-                            break;
-                            
-                        default:
-                            $task_results[$task] = array(
-                                'success' => false,
-                                'message' => 'Unknown task.'
-                            );
-                            $has_errors = true;
-                            break;
-                    }
-                } catch (Exception $e) {
-                    $task_results[$task] = array(
-                        'success' => false,
-                        'message' => 'Error: ' . $e->getMessage()
-                    );
-                    $has_errors = true;
-                }
-            }
-            
-            // Display results
-            if (!empty($task_results)) {
-                echo '<div class="notice notice-' . ($has_errors ? 'warning' : 'success') . ' is-dismissible"><p>';
-                foreach ($task_results as $task => $result) {
-                    echo '<strong>' . esc_html(ucfirst(str_replace('_', ' ', $task))) . ':</strong> ' . esc_html($result['message']) . '<br>';
-                }
-                echo '</p></div>';
-            }
-        } else {
-            echo '<div class="notice notice-warning is-dismissible"><p>No tasks selected.</p></div>';
-        }
-    }
-
-    // Include the PHP template instead of HTML
-    require_once plugin_dir_path(__FILE__) . 'settings-page.php';
-}
+// Include the settings API file
+require_once plugin_dir_path(__FILE__) . 'settings-api.php';
 
 // Task: Delete all posts
 function vj_toolkit_delete_posts() {
