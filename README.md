@@ -7,8 +7,8 @@ Tags: cleanup, optimization, delete, posts, pages, comments, media, themes, perm
 Requires at least: 4.6
 Tested up to: 6.2.2
 Stable tag: 2.0.3
-License: GPLv3 or later
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 A versatile plugin for WordPress, simplifying website cleaning and optimization. Easily delete posts, pages, comments, media, and inactive themes. Manage permalink structure, plugins, and create new pages effortlessly.

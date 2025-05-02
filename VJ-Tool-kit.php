@@ -6,8 +6,8 @@
  * Version: 2.0.3
  * Author: VJRanga
  * Author URI: https://vjranga.com/
- * License: GPLv3 or later
- * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Donate link: https://www.buymeacoffee.com/vjranga
  * Tested up to: 6.2.2
  * Requires PHP: 7.4
