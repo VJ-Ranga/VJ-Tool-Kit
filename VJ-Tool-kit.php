@@ -337,12 +337,3 @@ function vj_toolkit_create_pages($page_list) {
     
     return $count;
 }
-
-// Register uninstall hook
-register_uninstall_hook(__FILE__, 'vj_toolkit_uninstall');
-
-// Plugin uninstall cleanup
-function vj_toolkit_uninstall() {
-    // Clean up any plugin options or data if needed
-    delete_option('vj_toolkit_options');
-}
