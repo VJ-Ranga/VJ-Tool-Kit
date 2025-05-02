@@ -11,7 +11,7 @@
  * Donate link: https://www.buymeacoffee.com/vjranga
  * Tested up to: 6.2.2
  * Requires PHP: 7.4
- * Text Domain: vj-toolkit
+ * Text Domain: vj-tool-kit
  * Domain Path: /languages
  */
 
