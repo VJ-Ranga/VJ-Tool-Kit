@@ -3,7 +3,7 @@
  * Plugin Name: VJ Tool Kit
  * Plugin URI: https://cloudycode.net/
  * Description: A versatile plugin for WordPress, simplifying website cleaning and optimization. Easily delete posts, pages, comments, media, and inactive themes. Manage permalink structure, plugins, and create new pages effortlessly.
- * Version: 2.0.5
+ * Version: 2.0.6
  * Author: VJRanga
  * Author URI: https://vjranga.com/
  * License: GPLv2 or later
