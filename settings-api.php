@@ -441,22 +441,9 @@ function vj_toolkit_settings_page() {
     if (!current_user_can('manage_options')) {
         wp_die(__('You do not have sufficient permissions to access this page.'));
     }
-    
-    // Get the active tab from the $_GET parameter
-    $default_tab = 'cleanup';
-    $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
     ?>
     <div class="wrap">
         <h1><?php echo esc_html__('VJ Tool Kit Settings', 'vj-toolkit'); ?></h1>
-        
-        <h2 class="nav-tab-wrapper">
-            <a href="?page=vj-toolkit-settings&tab=cleanup" class="nav-tab <?php echo $active_tab == 'cleanup' ? 'nav-tab-active' : ''; ?>">
-                <?php echo esc_html__('Cleanup Tools', 'vj-toolkit'); ?>
-            </a>
-            <a href="?page=vj-toolkit-settings&tab=setup" class="nav-tab <?php echo $active_tab == 'setup' ? 'nav-tab-active' : ''; ?>">
-                <?php echo esc_html__('Site Setup', 'vj-toolkit'); ?>
-            </a>
-        </h2>
         
         <form method="post" action="options.php">
             <?php
