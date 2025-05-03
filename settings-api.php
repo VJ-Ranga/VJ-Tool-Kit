@@ -441,56 +441,11 @@ function vj_toolkit_settings_page() {
     if (!current_user_can('manage_options')) {
         wp_die(__('You do not have sufficient permissions to access this page.'));
     }
-    ?>
-    <div class="wrap">
-        <h1><?php echo esc_html__('VJ Tool Kit Settings', 'vj-toolkit'); ?></h1>
-        
-        <form method="post" action="options.php">
-            <?php
-            // Output security fields
-            settings_fields('vj_toolkit_settings_group');
-            
-            // Output setting sections and fields
-            do_settings_sections('vj-toolkit-settings');
-            
-            // Submit button
-            submit_button(esc_html__('Save Settings', 'vj-toolkit'));
-            ?>
-        </form>
-        
-        <form method="post" action="">
-            <?php wp_nonce_field('vj_toolkit_actions', 'vj_toolkit_nonce'); ?>
-            <p>
-                <?php 
-                submit_button(
-                    esc_html__('Execute Tasks', 'vj-toolkit'), 
-                    'primary', 
-                    'execute_tasks', 
-                    true, 
-                    [
-                        'data-confirm' => esc_html__('Are you sure you want to execute these tasks? This cannot be undone.', 'vj-toolkit'),
-                        'id' => 'vj_toolkit_submit'
-                    ]
-                ); 
-                ?>
-            </p>
-        </form>
-
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $('#vj_toolkit_submit').on('click', function(e) {
-                    // Check if destructive actions are selected
-                    var hasDestructiveAction = $('.destructive-action:checked').length > 0;
-                    
-                    if (hasDestructiveAction) {
-                        if (!confirm($(this).data('confirm'))) {
-                            e.preventDefault();
-                            return false;
-                        }
-                    }
-                });
-            });
-        </script>
-    </div>
-    <?php
+    
+    // Get the active tab from the $_GET parameter
+    $default_tab = 'cleanup';
+    $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
+    
+    // Include the settings page template
+    include plugin_dir_path(__FILE__) . 'settings-page.php';
 }
