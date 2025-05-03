@@ -15,33 +15,3 @@
     color: #856404;
 }
 
-.vj-tabs {
-    margin-top: 20px;
-}
-
-.vj-tab-buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.vj-tab-buttons button {
-    padding: 8px 16px;
-    border: none;
-    background: #0073aa;
-    color: white;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.vj-tab-buttons button.active {
-    background: #005177;
-}
-
-.vj-tab-content {
-    display: none;
-}
-
-.vj-tab-content.active {
-    display: block;
-}
