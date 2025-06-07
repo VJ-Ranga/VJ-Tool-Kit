@@ -3,8 +3,8 @@ Contributors: VJRanga
 Donate link: https://www.buymeacoffee.com/vjranga
 Tags: cleanup, optimization, delete, posts, pages, comments, media, themes, permalink, plugins, create pages
 Requires at least: 4.6
-Tested up to: 6.2.2
-Stable tag: 2.0.3
+Tested up to: 6.8
+Stable tag: 2.0.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,12 @@ Enter the page titles in the 'Page List' textarea on the 'VJ Tool Kit Settings' 
 3. Successful execution of tasks
 
 == Changelog ==
+= 2.0.5 =
+* Synchronized versioning across all plugin files. Tested up to WordPress 6.8.
+
+= 2.0.4 =
+* General maintenance and compatibility updates.
+
 = 2.0.3 =
 * Minor bug fixes and improvements
 
@@ -63,6 +69,12 @@ Enter the page titles in the 'Page List' textarea on the 'VJ Tool Kit Settings' 
 * Initial release
 
 == Upgrade Notice ==
+= 2.0.5 =
+Synchronized versioning across all plugin files and confirmed compatibility with WordPress 6.8.
+
+= 2.0.4 =
+General maintenance and compatibility updates.
+
 = 2.0.3 =
 Minor bug fixes and improvements.
 

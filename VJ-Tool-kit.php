@@ -9,7 +9,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Donate link: https://www.buymeacoffee.com/vjranga
- * Tested up to: 6.2.2
+ * Tested up to: 6.8
  * Requires PHP: 7.4
  * Text Domain: vj-tool-kit
  * Domain Path: /languages
@@ -32,7 +32,7 @@ function vj_toolkit_admin_styles($hook) {
         return;
     }
     
-    wp_enqueue_style('vj-toolkit-admin-style', plugin_dir_url(__FILE__) . 'settings-page.css', array(), '2.0.3');
+    wp_enqueue_style('vj-toolkit-admin-style', plugin_dir_url(__FILE__) . 'settings-page.css', array(), '2.0.5');
     wp_enqueue_script('jquery');
 }
 add_action('admin_enqueue_scripts', 'vj_toolkit_admin_styles');
